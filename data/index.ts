@@ -92,7 +92,7 @@ export const projects = [
     id: 3,
     title: "A Modern and Minimalist Portfolio",
     des: "A minimalist portfolio developed using Next.js.",
-    img: "/port.svg",
+    img: "/Port.svg",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/next.svg", "/fm.svg"],
     link: "/ui.aiimg.com",
   },
