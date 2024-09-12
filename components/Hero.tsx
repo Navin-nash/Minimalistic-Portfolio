@@ -26,7 +26,7 @@ const Hero = () => {
           words='Transforming Concepts into Seamless User Experiences'
           />
           <p className='text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl'>
-            Hi, I&aposm Navin Raj, a web developer based in India
+            Hi, I'm Navin Raj, a web developer based in India
           </p>
           <a href="#about">
             <MagicButton 
