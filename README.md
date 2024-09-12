@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - Navin Raj
 
-## Getting Started
+Welcome to my portfolio! This project showcases my work and skills as a software developer, including personal projects, professional experiences, and achievements.
 
-First, run the development server:
+[View Live Portfolio](https://navinraj-portfolio.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Deployment](#deployment)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## About
 
-## Learn More
+This portfolio website is built to present my technical skills, projects, and professional journey in a clean and modern format. It includes an interactive user interface and showcases my expertise in web development and other technical domains.
 
-To learn more about Next.js, take a look at the following resources:
+### Sections:
+- **Home**: Overview of who I am and what I do.
+- **Projects**: Details of the projects I have worked on with descriptions and live links.
+- **Skills**: List of technical skills.
+- **Contact**: A contact form and links to my social profiles.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- Responsive design that works on mobile, tablet, and desktop screens.
+- Smooth scrolling between sections.
+- Easy navigation with a fixed navbar.
+- Showcases key projects with descriptions and links to their repositories.
+- Integrated contact form for easy communication.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technologies
+
+This portfolio was built with:
+
+- **Next.js**: A React-based framework for static site generation and server-side rendering.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **Vercel**: Used for deploying the portfolio with fast performance and smooth integration with GitHub.
+
+---
+
+## Deployment
+
+This project is deployed using **Vercel**. Follow these steps to deploy your version:
+
+1. Create a [Vercel](https://vercel.com/) account.
+2. Connect your GitHub repository to Vercel.
+3. Configure any necessary environment variables.
+4. Push changes to the main branch, and Vercel will automatically deploy the latest version.
+
+---
