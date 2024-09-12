@@ -3,7 +3,6 @@ import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
 import MagicButton from './ui/MagicButton'
 import { HiArrowSmRight } from 'react-icons/hi'
-import { FaLocationArrow } from 'react-icons/fa6'
 
 const Hero = () => {
   return (
@@ -27,7 +26,7 @@ const Hero = () => {
           words='Transforming Concepts into Seamless User Experiences'
           />
           <p className='text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl'>
-            Hi, I'm Navin Raj, a web developer based in India
+            Hi, I&aposm Navin Raj, a web developer based in India
           </p>
           <a href="#about">
             <MagicButton 
