@@ -56,3 +56,9 @@ This project is deployed using **Vercel**. Follow these steps to deploy your ver
 4. Push changes to the main branch, and Vercel will automatically deploy the latest version.
 
 ---
+
+## Some of the snaps of the portfolio
+![Hero page](https://github.com/user-attachments/assets/88074f9c-087d-4075-8071-8c8f948b8a34)
+![DIv page](https://github.com/user-attachments/assets/595e0d64-426d-4bde-8b2a-f2b091afca30)
+![Projects](https://github.com/user-attachments/assets/2efef409-671a-4d99-a552-1fba0360fd11)
+
