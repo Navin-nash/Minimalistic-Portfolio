@@ -8,8 +8,6 @@ import Lottie from "react-lottie";
 
 import { cn } from "@/lib/utils";
 
-
-import { BackgroundGradientAnimation } from "./GradientBg";
 import {GridGlobe} from "@/components/ui/GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "@/components/ui/MagicButton";
@@ -115,9 +113,7 @@ export const BentoGridItem = ({
         </div>
         {id === 6 && (
           // add background animation , remove the p tag
-          <BackgroundGradientAnimation>
             <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
-          </BackgroundGradientAnimation>
         )}
 
         <div
@@ -189,7 +185,10 @@ export const BentoGridItem = ({
                 title={copied ? "Email is Copied!" : "Copy my email"}
                 icon={<IoCopyOutline />}
                 position="left"
-                handleClick={handleCopy}
+                onClick={() => {
+                  handleCopy();
+                  setCopied(true);
+                }}
                 otherClasses="!bg-[#161A31]"
               />
             </div>

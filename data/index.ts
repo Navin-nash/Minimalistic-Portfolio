@@ -82,11 +82,11 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Facial Recognition Attendance System",
-    des: "Simplify you marking and maintainance of attendance registry through this application.",
-    img: "/face.svg",
-    iconLists: ["/python.svg", "/opencv.svg"],
-    link: "",
+    title: "StudiVerse",
+    des: "A minimalistic chatbot to help students on their study abroad needs powered by GEMINI",
+    img: "/studiverse.png",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/next.svg", "/mongo.svg"],
+    link: "https://studiverse.org",
   },
   {
     id: 3,

@@ -2,7 +2,8 @@ import React from 'react'
 
 const MagicButton = ({
   title,icon,position}:{
-    title:string; icon: React.ReactNode; position:string; 
+    title:string; icon: React.ReactNode; position:string;  onClick?: () => void; // Optional onClick handler
+    otherClasses?: string; // Optional custom class names
 }) => {
   return (
     // Button code
