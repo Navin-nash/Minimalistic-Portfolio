@@ -146,6 +146,10 @@ const config = {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
+        shine: {
+          "0%": { "background-position": "0%" },
+          "100%": { "background-position": "600%" },
+        },
       },
       
       animation: {
@@ -160,6 +164,7 @@ const config = {
         fifth: "moveInCircle 20s ease infinite",
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        shine: "shine 16s linear infinite",
       },
     },
   },
