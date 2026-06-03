@@ -4,6 +4,7 @@ import { ThemeProvider } from "./provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
@@ -58,6 +59,7 @@ export default function RootLayout({
             disableTransitionOnChange={false}
           >
             <Navbar />
+            <Analytics />
             {children}
             <Footer />
           </ThemeProvider>
