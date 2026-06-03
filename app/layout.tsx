@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
+import { PostHogProvider } from "./posthog-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -51,19 +52,21 @@ export default function RootLayout({
           color: "var(--ds-text-primary)",
         }}
       >
-        <TooltipProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={false}
-            disableTransitionOnChange={false}
-          >
-            <Navbar />
-            <Analytics />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </TooltipProvider>
+        <PostHogProvider>
+          <TooltipProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem={false}
+              disableTransitionOnChange={false}
+            >
+              <Navbar />
+              <Analytics />
+              {children}
+              <Footer />
+            </ThemeProvider>
+          </TooltipProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
