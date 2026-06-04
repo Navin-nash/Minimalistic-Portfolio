@@ -8,12 +8,21 @@ type GitHubContributionsResponse = {
 
 export const getCachedContributions = unstable_cache(
   async (username: string) => {
-    const res = await fetch(
-      `${process.env.GITHUB_CONTRIBUTIONS_API_URL || `https://github-contributions-api.jogruber.de`}/v4/${username}?y=last`
-    )
-    const data = (await res.json()) as GitHubContributionsResponse
-    return data.contributions
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+      const res = await fetch(
+        `${process.env.GITHUB_CONTRIBUTIONS_API_URL || `https://github-contributions-api.jogruber.de`}/v4/${username}?y=last`,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeout);
+      if (!res.ok) return [] as Activity[];
+      const data = (await res.json()) as GitHubContributionsResponse;
+      return data.contributions;
+    } catch {
+      return [] as Activity[];
+    }
   },
   ["github-contributions"],
-  { revalidate: 86400 } // Cache for 1 day (86400 seconds)
+  { revalidate: 86400 }
 )
