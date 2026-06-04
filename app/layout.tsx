@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 import { PostHogProvider } from "./posthog-provider";
@@ -88,20 +88,23 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   category: "technology",
-  // iOS/Safari web app
+  // iOS/Safari PWA
   appleWebApp: {
     capable: true,
     title: "Navin Raj",
     statusBarStyle: "default",
   },
-  // Browser/Discord theme accent color
-  other: {
-    "theme-color": "#000000",
-    // Slack/Teams unfurl hint
-    "og:image:secure_url": `${siteUrl}/og-image.png`,
-    // Telegram
-    "telegram:channel": "@navinraj",
-  },
+};
+
+// Separate viewport export — required in Next.js 14+ for themeColor
+// Discord reads this for embed accent; Chrome/Safari use it for the browser chrome color
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 const jsonLd = {
