@@ -2,12 +2,21 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Calendar, Briefcase } from "lucide-react";
+import { Calendar, Briefcase, ChevronDown } from "lucide-react";
 
 import { projects } from "@/data";
 
-/* ─── Detailed Project Data sorted chronologically (latest first) ───── */
-const PROJECT_DETAILS = [...projects].sort((a, b) => a.chronologicalOrder - b.chronologicalOrder);
+const EARLIER_IDS = new Set([4, 5]);
+
+/* Featured projects sorted chronologically (latest first) */
+const PROJECT_DETAILS = [...projects]
+  .filter((p) => !EARLIER_IDS.has(p.id))
+  .sort((a, b) => a.chronologicalOrder - b.chronologicalOrder);
+
+/* Earlier / student work */
+const EARLIER_PROJECTS = [...projects]
+  .filter((p) => EARLIER_IDS.has(p.id))
+  .sort((a, b) => a.chronologicalOrder - b.chronologicalOrder);
 
 type ProjectItem = typeof projects[number];
 
@@ -119,6 +128,7 @@ function ProjectCard({ project, isActive }: { project: ProjectItem; isActive: bo
 /* ─── Main Timeline Showcase Component ─────────────────────────────── */
 export function WorksShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showEarlier, setShowEarlier] = useState(false);
   const sentinelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const setSentinelRef = (el: HTMLDivElement | null, i: number) => {
@@ -284,6 +294,91 @@ export function WorksShowcase() {
             );
           })}
         </div>
+      </div>
+
+      {/* Earlier Work — collapsed by default */}
+      <div className="max-w-6xl mx-auto w-full px-5 md:px-10 mt-20">
+        <button
+          onClick={() => setShowEarlier((v) => !v)}
+          className="flex items-center gap-2 text-sm transition-colors duration-150 mb-6"
+          style={{
+            color: "var(--ds-text-tertiary)",
+            fontFamily: "var(--font-elms)",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ds-text-secondary)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--ds-text-tertiary)"; }}
+        >
+          <ChevronDown
+            size={14}
+            className="transition-transform duration-300"
+            style={{ transform: showEarlier ? "rotate(180deg)" : "rotate(0deg)" }}
+          />
+          Earlier work ({EARLIER_PROJECTS.length})
+        </button>
+
+        {showEarlier && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {EARLIER_PROJECTS.map((project) => (
+              <div
+                key={project.id}
+                className="rounded-2xl p-6 border"
+                style={{
+                  backgroundColor: "var(--ds-surface)",
+                  borderColor: "var(--ds-border)",
+                }}
+              >
+                <p
+                  className="text-[9px] tracking-[0.2em] uppercase mb-1 font-light"
+                  style={{ color: "var(--ds-text-tertiary)", fontFamily: "var(--font-elms)" }}
+                >
+                  {project.category}
+                </p>
+                <h3
+                  className="text-base mb-1"
+                  style={{ color: "var(--ds-text-primary)", fontFamily: "var(--font-elms)" }}
+                >
+                  {project.title}
+                </h3>
+                <p
+                  className="text-xs mb-3 font-light"
+                  style={{ color: "var(--ds-text-tertiary)", fontFamily: "ui-monospace, monospace" }}
+                >
+                  {project.year}
+                </p>
+                <p
+                  className="text-[12.5px] leading-relaxed font-light"
+                  style={{ color: "var(--ds-text-secondary)", fontFamily: "var(--font-elms)" }}
+                >
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1 mt-3">
+                  {project.stack.slice(0, 5).map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded px-2 py-0.5 text-[10px] font-light"
+                      style={{
+                        backgroundColor: "var(--ds-accent-subtle)",
+                        border: "1px solid rgba(199,246,254,0.2)",
+                        color: "var(--ds-text-secondary)",
+                        fontFamily: "var(--font-elms)",
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </div>
   );

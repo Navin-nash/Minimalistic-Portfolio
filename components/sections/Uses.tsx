@@ -5,7 +5,6 @@ import { useTheme } from "next-themes";
 
 import { svg as vsCodeSvg }    from "thesvg/visual-studio-code";
 import { svg as claudeSvg }    from "thesvg/claude";
-import { svg as claudeCodeSvg } from "thesvg/claude-code";
 import { svg as firefoxSvg }   from "thesvg/firefox";
 import { svg as dockerSvg }    from "thesvg/docker";
 import { svg as postmanSvg }   from "thesvg/postman";
@@ -36,7 +35,6 @@ const CRAFT_APPS: AppItem[] = [
   { name: "VS Code",     svg: vsCodeSvg },
   { name: "Antigravity", svg: antigravitySvg },
   { name: "Claude",      svg: claudeSvg },
-  { name: "Claude Code", svg: claudeCodeSvg },
   { name: "Firefox",     svg: firefoxSvg },
   { name: "Docker",      svg: dockerSvg },
   { name: "Postman",     svg: postmanSvg },

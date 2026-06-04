@@ -227,31 +227,13 @@ export default function About() {
                 className="text-[1.05rem] leading-relaxed"
                 style={{ color: "var(--ds-text-secondary)", fontFamily: "var(--font-elms)", fontWeight: 300 }}
               >
-                I architect and build intelligent digital systems designed for the next generation of software.
+                I design and build production AI systems — LangGraph multi-agent pipelines, real-time collaboration infrastructure, and the full-stack SaaS that ties them together.
               </p>
               <p
                 className="text-[1.05rem] leading-relaxed"
                 style={{ color: "var(--ds-text-secondary)", fontFamily: "var(--font-elms)", fontWeight: 300 }}
               >
-                My expertise spans AI agents, distributed systems, cloud infrastructure, and full-stack engineering, enabling me to take products from a blank canvas to production scale. I specialize in designing autonomous workflows, scalable platforms, and AI-powered experiences that combine technical depth with practical business value.
-              </p>
-              <p
-                className="text-[1.05rem] leading-relaxed"
-                style={{ color: "var(--ds-text-secondary)", fontFamily: "var(--font-elms)", fontWeight: 300 }}
-              >
-                At my core, I am a constant learner and builder. I'm driven by curiosity, continuously exploring emerging technologies, experimenting with new ideas, and transforming them into real-world products. Whether it's agentic AI, cloud architecture, developer tools, automation frameworks, or modern web platforms, I enjoy learning by building.
-              </p>
-              <p
-                className="text-[1.05rem] leading-relaxed"
-                style={{ color: "var(--ds-text-secondary)", fontFamily: "var(--font-elms)", fontWeight: 300 }}
-              >
-                Rather than viewing software as isolated applications, I approach every product as an interconnected system—where data, intelligence, automation, and user experience work together seamlessly. This perspective allows me to create solutions that are not only technically robust but also adaptable, scalable, and future-ready.
-              </p>
-              <p
-                className="text-[1.05rem] leading-relaxed"
-                style={{ color: "var(--ds-text-secondary)", fontFamily: "var(--font-elms)", fontWeight: 300 }}
-              >
-                I thrive at the intersection of engineering, product, and business, collaborating across teams, cultures, and disciplines to solve complex problems and deliver meaningful impact through technology. My mission is simple: build intelligent systems that empower people, accelerate innovation, and unlock new possibilities.
+                As Technical Lead at WeCommit, I own the full product lifecycle across multiple live platforms — architecture decisions, engineering execution, and the team that ships it all, across Chennai and Seoul.
               </p>
             </section>
 

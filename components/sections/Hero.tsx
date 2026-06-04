@@ -74,7 +74,7 @@ export default function Hero() {
               lineHeight: "1.1",
             }}
           >
-            Engineering products, <br className="hidden md:block" /> leading teams, and orchestrating devops
+            I build multi-agent AI systems <br className="hidden md:block" /> and ship the SaaS that runs them in production
           </h1>
 
           {/* Bio Description Paragraph */}

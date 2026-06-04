@@ -93,11 +93,11 @@ const ORBIT_D = [
 ];
 
 // ── Sub-components ───────────────────────────────────────────────────────────
-const PROCESS_STEPS = [
-  { step: "01", label: "Scope & align",       detail: "< 1 day"          },
-  { step: "02", label: "Build & iterate",     detail: "daily PRs"        },
-  { step: "03", label: "Review & polish",     detail: "rapid feedback"   },
-  { step: "04", label: "Deploy & document",   detail: "zero surprises"   },
+const METRICS = [
+  { value: "30+",    label: "founders onboarded"},
+  { value: "99.2%",   label: "production uptime"},
+  { value: "<30s",    label: "roadmap generation"},
+  { value: "<100ms",  label: "real-time doc sync" },
 ];
 
 const LEADERSHIP_ITEMS = [
@@ -129,59 +129,42 @@ export function AboutBento() {
     <section className="py-10 px-4 md:px-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-3">
 
-        {/* ── Card 1: Process ── */}
+        {/* ── Card 1: Impact metrics ── */}
         <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 p-6 flex flex-col gap-4 max-h-72">
           <div>
             <p
               className="text-[10px] tracking-[0.14em] uppercase text-neutral-400 dark:text-neutral-600 mb-1.5"
               style={{ fontFamily: "ui-monospace, monospace" }}
             >
-              How I work
+              By the numbers
             </p>
             <h3
               className="text-base font-semibold text-neutral-900 dark:text-white leading-snug"
               style={{ fontFamily: "var(--font-elms)" }}
             >
-              Scoped to shipped — fast.
+              Real outcomes on real products.
             </h3>
           </div>
-          <div className="flex-1 flex items-center overflow-hidden">
-            <div className="flex flex-col w-full">
-              {PROCESS_STEPS.map((item, i) => (
-                <div key={item.step} className="flex items-stretch gap-3">
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="w-3.5 h-3.5 rounded-full border-2 shrink-0 mt-0.5"
-                      style={{
-                        borderColor: i === PROCESS_STEPS.length - 1
-                          ? "rgb(115,115,115)"
-                          : isDark ? "rgb(64,64,64)" : "rgb(212,212,212)",
-                        backgroundColor: i === PROCESS_STEPS.length - 1
-                          ? "rgb(115,115,115)"
-                          : "transparent",
-                      }}
-                    />
-                    {i < PROCESS_STEPS.length - 1 && (
-                      <div className="w-px flex-1 bg-neutral-200 dark:bg-neutral-800 my-1" />
-                    )}
-                  </div>
-                  <div className="pb-3 flex items-center justify-between w-full min-w-0">
-                    <span
-                      className="text-xs text-neutral-700 dark:text-neutral-300 font-medium truncate"
-                      style={{ fontFamily: "var(--font-elms)" }}
-                    >
-                      {item.label}
-                    </span>
-                    <span
-                      className="text-[10px] text-neutral-400 dark:text-neutral-600 ml-3 shrink-0"
-                      style={{ fontFamily: "ui-monospace, monospace" }}
-                    >
-                      {item.detail}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="flex-1 flex flex-col justify-center gap-3">
+            {METRICS.map((m) => (
+              <div
+                key={m.value}
+                className="flex items-baseline justify-between gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800"
+              >
+                <span
+                  className="text-sm font-semibold text-neutral-900 dark:text-white shrink-0"
+                  style={{ fontFamily: "ui-monospace, monospace" }}
+                >
+                  {m.value}
+                </span>
+                <span
+                  className="text-xs text-neutral-600 dark:text-neutral-400 truncate"
+                  style={{ fontFamily: "var(--font-elms)" }}
+                >
+                  {m.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 

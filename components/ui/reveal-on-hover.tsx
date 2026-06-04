@@ -75,7 +75,7 @@ CardHoverRevealMain.displayName = "CardHoverRevealMain"
 const CardHoverRevealContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+>(({ className, style: propStyle, ...props }, ref) => {
   const { isHovered } = useCardHoverRevealContext()
   return (
     <div
@@ -86,8 +86,8 @@ const CardHoverRevealContent = React.forwardRef<
       )}
       style={
         isHovered
-          ? { translate: "0%", opacity: 1, ...props.style }
-          : { translate: "0% 120%", opacity: 0, ...props.style }
+          ? { translate: "0%", opacity: 1, ...propStyle }
+          : { translate: "0% 120%", opacity: 0, ...propStyle }
       }
       {...props}
     />

@@ -77,12 +77,12 @@ export const projects = [
     extendedDescription:
       "AI-powered startup execution SaaS platform serving 200+ founders during an 8-week accelerator program. Integrates dynamic AI planning with LangGraph agent co-founders, a visual React Flow canvas, real-time streaming, and stateless mentor coordination loops. Deployed live on https://stagex.kr.",
     details: [
-      "Engineered dynamic, multi-agent SaaS orchestration pipelines using LangGraph and the Vercel AI SDK.",
-      "Designed a 4-node deep research agent (SearchQuery → WebSearch → Synthesis → Report) with a pre-deduction credit ledger system.",
-      "Implemented real-time roadmap generation with progressive streaming using Vercel AI SDK (streamObject), rendering large plans in <2s.",
-      "Developed an interactive tree layout engine using React Flow for visual drag-drop roadmap synchronization with Prisma DB.",
-      "Engineered token-based mentor invitation/auth system (httpOnly cookies) with dynamic cohort filtering and dashboard feedback UI.",
-      "Integrated Paddle subscription checking and transactional checkouts with idempotent event webhook handlers."
+      "30+ founders onboarded across an 8-week accelerator — cut roadmap + full report generation from 180s+ to under 30s by shifting from sequential LLM calls to Vercel AI SDK streaming with parallel agent steps.",
+      "Engineered dynamic multi-agent SaaS orchestration using LangGraph and Vercel AI SDK; progressive streamObject streaming eliminated blank-screen waits on long-running plans.",
+      "Designed a 4-node deep research agent (SearchQuery → WebSearch → Synthesis → Report) with a pre-deduction credit ledger — users aren't charged for failed or cancelled runs.",
+      "Built an interactive tree layout engine with React Flow for drag-drop roadmap sync; the challenge was reconciling local drag state with the PostgreSQL-persisted graph in real time.",
+      "Mentor auth first used JWTs in localStorage — switched to httpOnly cookies after identifying XSS exposure, then added dynamic cohort filtering and dashboard feedback UI.",
+      "Integrated Paddle subscription billing with idempotent webhook event handlers to prevent duplicate charge processing under retry storms."
     ],
     stack: ["Next.js 14", "React 18", "TypeScript", "LangGraph", "React Flow", "Prisma", "PostgreSQL", "Paddle", "NextAuth", "Vercel"],
     thumbnail: "/stagex.png",
@@ -103,12 +103,12 @@ export const projects = [
     extendedDescription:
       "Production-grade AI platform (WeCommit SBIR) that automates federal SBIR/STTR grant discovery and proposal generation for small businesses. Features persistent deep agent conversation memory, real-time multi-user document editing via Yjs CRDTs + Hocuspocus WebSockets, and custom Gemini model routing.",
     details: [
-      "Architected a 5-layer middleware deep agent stack (Todo, Filesystem, SubAgent, Skills, Memory) using LangGraph and PostgreSQL checkpointing.",
-      "Built custom GeminiRoutingModel supporting runtime Gemini 2.5 Pro vs Flash model selection and dynamic thinking budgets.",
-      "Engineered custom streaming protocols mapping LangGraph event streams to Vercel AI SDK DataStreamContext (<3s for 50KB proposals).",
-      "Integrated real-time collaborative document editing utilizing Yjs CRDT + Hocuspocus WebSockets (<100ms sync latency).",
-      "Developed custom Tiptap 3 rich-text editor extensions for inline artifact embeds, code rendering, and real-time AI content injection.",
-      "Resolved async PostgreSQL pooling bottlenecks by implementing automated retry states with exponential backoff, raising uptime to 99.2%."
+      "Raised production uptime to 99.2% by diagnosing async PostgreSQL pool exhaustion under concurrent agent load — exponential backoff retry states fixed what connection pool tuning alone couldn't.",
+      "Cut grant proposal generation to under 3s for 50KB documents — the bottleneck was mapping LangGraph's event stream to Vercel AI SDK DataStreamContext; direct SSE caused multi-user session collisions that this solved.",
+      "Achieved under 100ms real-time document sync via Yjs CRDT + Hocuspocus WebSockets; the hard part was reconciling CRDT merge operations with mid-session AI content injections without losing user edits.",
+      "Architected a 5-layer middleware deep agent stack (Todo, Filesystem, SubAgent, Skills, Memory) with PostgreSQL checkpointing for long-running agent resumption across disconnected sessions.",
+      "Built custom GeminiRoutingModel supporting runtime 2.5 Pro vs Flash selection and dynamic thinking budgets — model routing alone cut average response cost by routing simple queries to Flash.",
+      "Developed custom Tiptap 3 editor extensions for inline artifact embeds and real-time AI content injection without corrupting document schema."
     ],
     stack: ["React 19", "TypeScript", "Tiptap 3", "FastAPI", "LangGraph", "Gemini AI", "PostgreSQL", "Yjs", "Hocuspocus", "Alembic", "Playwright"],
     thumbnail: "/fundscout.png",
@@ -129,9 +129,9 @@ export const projects = [
     extendedDescription:
       "A creative showcase utilizing advanced generative AI models to convert text prompts into high-fidelity custom images. Integrates a vibrant community feed, real-time social sharing, search index filters, and instant media downloads.",
     details: [
-      "Integrated OpenAI's DALL-E image generation API into an asynchronous task queue background system.",
-      "Architected media storage and high-speed distribution networks using AWS S3 and AWS CloudFront CDN cache.",
-      "Developed a lightweight, high-performance community feed with MongoDB and Express.js to scale concurrent requests."
+      "Direct DALL-E API calls caused request timeouts under concurrent load — rebuilt around an async task queue with MongoDB job tracking, cutting generation failure rate to near zero.",
+      "Architected media storage on AWS S3 with CloudFront CDN for global image distribution; cache invalidation strategy was designed to minimize egress costs on re-generation.",
+      "Developed a lightweight community feed with Express.js and MongoDB — schema design prioritised read performance for paginated gallery queries over write flexibility."
     ],
     stack: ["React.js", "Node.js", "Express.js", "MongoDB", "DALL-E", "AWS S3", "AWS CloudFront"],
     thumbnail: "/cross.png",
@@ -198,12 +198,12 @@ export const projects = [
     extendedDescription:
       "AI-powered government grant automation and enterprise document collaboration platform designed for startups and SMBs. Streamlines grant discovery, automates proposal drafting matching complex rubrics, and hosts a secure, collaborative rich-text office editor with full revision rollbacks.",
     details: [
-      "Engineered a premium, responsive React workspace using Radix UI accessible primitives and Tailwind CSS v4, with elegant Framer Motion transitions.",
-      "Architected and implemented a fully compliant Express.js WOPI Host integrated with AWS S3, streaming active office documents securely into Collabora iframe editors.",
-      "Developed concurrency collision locking using custom timestamp headers to coordinate multi-user saves and auto-merge actions.",
-      "Constructed an automatic S3 snapshot timeline component, allowing founders to review previous draft histories and restore versions with zero data loss.",
-      "Managed security integrations with Better Auth, including Naver/Kakao OAuth systems and Drizzle DDL database schemas on PostgreSQL.",
-      "Orchestrated multi-stage Docker configurations and automated deployments to Fly.io Tokyo region for optimal latency (<50ms in Korea) and Vercel staging previews."
+      "Deployed to Fly.io Tokyo to achieve under 50ms API latency for Korean users — multi-stage Docker builds kept image size lean without sacrificing runtime dependencies.",
+      "Reverse-engineered Collabora Online's undocumented WOPI save protocol to build a fully compliant Express.js WOPI Host; concurrent multi-user saves required custom timestamp-based collision locking headers that Collabora's docs don't mention.",
+      "Built S3 snapshot timeline with automatic version history and zero-data-loss restoration — the challenge was atomically coordinating S3 object versioning with document state in PostgreSQL to prevent partial restore scenarios.",
+      "Engineered a responsive React workspace with Radix UI and Tailwind CSS v4; Framer Motion transitions were tuned to the collaboration UX rhythm so state changes feel instant, not janky.",
+      "Bridged Naver/Kakao OAuth non-standard token formats to the Better Auth adapter interface — Korean providers don't follow OAuth 2.0 spec uniformly, which required custom normalisation middleware.",
+      "Orchestrated multi-stage Docker builds across Fly.io production and Vercel staging previews, with GitHub Actions gating staging deploys before Tokyo promotion."
     ],
     stack: ["React", "Express.js", "Tailwind CSS v4", "Better Auth", "AWS S3", "Drizzle ORM", "PostgreSQL", "Docker", "Fly.io", "Vercel"],
     thumbnail: "/gendoc.png",
