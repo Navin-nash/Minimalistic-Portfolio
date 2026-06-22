@@ -17,7 +17,7 @@ export const skills: Record<string, string[]> = {
   "Backend":     ["FastAPI", "Node.js", "Express.js", "REST APIs", "Webhooks"],
   "Databases":   ["PostgreSQL", "MySQL", "MongoDB", "pgvector", "Prisma", "Drizzle ORM", "Tortoise ORM"],
   "Cloud / DevOps": ["AWS", "Hetzner", "Fly.io", "Vercel", "GitHub Actions", "Docker", "Kubernetes"],
-  "Languages":   ["TypeScript", "Python", "JavaScript", "SQL", "C", "C++", "Java"],
+  "Languages":   ["TypeScript", "Python", "JavaScript", "Rust", "SQL", "C", "C++", "Java"],
 };
 
 export const experiences = [
@@ -64,6 +64,31 @@ export const education = {
 };
 
 export const projects = [
+  {
+    id: 7,
+    title: "Astra",
+    category: "AI SaaS · Developer Tool",
+    role: "Founder & Full-Stack Engineer",
+    timeline: "May 2026 – Present",
+    year: "2026 – Present",
+    chronologicalOrder: 0,
+    description:
+      "Transforms GitHub repositories into live technical portfolios using AST-level code analysis and AI-generated narratives. Zero configuration, auto-sync via webhooks, and portfolio generation in under 60 seconds.",
+    extendedDescription:
+      "Astra reads your actual codebase through AST-level analysis across 20+ programming languages, auto-detects frameworks and architecture patterns, then generates AI-crafted technical narratives tailored for engineering audiences — deployed live in under 60 seconds. No config files. No manual descriptions. Just your GitHub, as a portfolio.",
+    details: [
+      "Built an AST-level code analyser supporting 20+ languages that infers architecture patterns, framework usage, and design decisions directly from source — no README required.",
+      "Designed a GitHub webhook pipeline achieving under 1-minute median sync lag so portfolios auto-update on every push without user intervention.",
+      "Engineered a Gemini-powered narrative layer that produces technical descriptions tuned for engineering audiences, replacing the manual 'describe your project' step entirely.",
+      "Implemented one-click GitHub OAuth with read-only scopes and zero persistent token storage — auth is stateless by design to minimise the attack surface.",
+      "Shipped three distinct portfolio renderers (Minimal, Terminal, Void) sharing a single content graph, with shareable deep-links per project and per-repository editorial override controls.",
+    ],
+    stack: ["Next.js", "TypeScript", "Rust", "Google Gemini", "GitHub OAuth", "GitHub Webhooks", "AST Analysis"],
+    thumbnail: "/astra.png",
+    link: "https://useastra.tech",
+    github: null,
+    featured: true,
+  },
   {
     id: 1,
     title: "StageX",

@@ -35,6 +35,7 @@ import { svg as drizzleSvg } from "thesvg/drizzle-orm";
 import { svg as sqlalchemySvg } from "thesvg/sqlalchemy";
 import { svg as openapiSvg } from "thesvg/openapi";
 import { svg as sqliteSvg } from "thesvg/sqlite";
+import { svg as rustSvg } from "thesvg/rust";
 
 // ── Custom SVGs for missing assets ──────────────────────────────────────────
 const webhookSvg = `
@@ -75,7 +76,7 @@ export const sanitizeSvg = (svgContent: string, key: string) => {
     .replace(/url\(#([^)]+)\)/g, `url(#${prefix}-$1)`);
 
   // Theme-sensitive icons: make white paths inherit text color (currentColor)
-  const themeSensitive = ["Vercel", "Vercel AI SDK", "OpenAI", "Prisma", "MySQL"];
+  const themeSensitive = ["Vercel", "Vercel AI SDK", "OpenAI", "Prisma", "MySQL", "Rust"];
   if (themeSensitive.includes(key)) {
     sanitized = sanitized
       .replace(/fill=["']#[fF]{3,6}["']/g, 'fill="currentColor"')
@@ -122,6 +123,7 @@ const svgIcons: Record<string, string> = {
   "C++": cppSvg,
   "Java": javaSvg,
   "C": cSvg,
+  "Rust": rustSvg,
 };
 
 const getFallbackIcon = (skill: string) => {

@@ -1,6 +1,6 @@
 "use client"
 
-import { use } from "react"
+import { useState, useEffect } from "react"
 import { format } from "date-fns"
 
 import { cn } from "@/lib/utils"
@@ -21,15 +21,40 @@ import {
 } from "@/components/contribution-graph"
 
 export function GitHubContributions({
-  contributions,
+  username,
   githubProfileUrl,
   className,
 }: {
-  contributions: Promise<Activity[]>
+  username: string
   githubProfileUrl: string
   className?: string
 }) {
-  const data = use(contributions)
+  const [data, setData] = useState<Activity[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 8000)
+
+    fetch(
+      `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+      { signal: controller.signal }
+    )
+      .then((res) => (res.ok ? res.json() : { contributions: [] }))
+      .then((json) => setData(json.contributions ?? []))
+      .catch(() => setData([]))
+      .finally(() => {
+        clearTimeout(timeout)
+        setLoading(false)
+      })
+
+    return () => {
+      clearTimeout(timeout)
+      controller.abort()
+    }
+  }, [username])
+
+  if (loading) return <GitHubContributionsFallback />
 
   return (
     <ContributionGraph
@@ -97,4 +122,3 @@ export function GitHubContributionsFallback() {
     </div>
   )
 }
-

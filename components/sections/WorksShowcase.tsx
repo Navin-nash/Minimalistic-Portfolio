@@ -59,7 +59,7 @@ function ProjectCard({ project, isActive }: { project: ProjectItem; isActive: bo
           </div>
           <div className="flex items-center gap-2">
             <Calendar size={13} className="text-[#7EDCEE] shrink-0" />
-            <span><strong>Timeline:</strong> {project.timeline}</span>
+            <span>{project.timeline}</span>
           </div>
         </div>
 

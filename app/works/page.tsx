@@ -6,11 +6,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://navinraj.dev";
 export const metadata: Metadata = {
   title: "Works",
   description:
-    "Explore the production SaaS platforms, intelligent multi-agent architectures, and infrastructure projects engineered by Navin Raj Govindan — including StageX, Fundscout, GenDoc, and CROSS-E.",
+    "Explore the production SaaS platforms, intelligent multi-agent architectures, and infrastructure projects engineered by Navin Raj Govindan — including Astra, StageX, Fundscout, GenDoc, and CROSS-E.",
   openGraph: {
     title: "Works — Navin Raj Govindan",
     description:
-      "Production SaaS platforms, AI multi-agent systems, and infrastructure projects by Navin Raj Govindan — StageX, Fundscout, GenDoc, CROSS-E.",
+      "Production SaaS platforms, AI multi-agent systems, and infrastructure projects by Navin Raj Govindan — Astra, StageX, Fundscout, GenDoc, CROSS-E.",
     url: `${siteUrl}/works`,
     images: [
       {
